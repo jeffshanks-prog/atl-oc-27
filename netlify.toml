@@ -1,0 +1,24 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "20"
+  # These two are meant to be public (they ship in the app bundle), so tell Netlify's
+  # secret scanner not to fail the build when it finds them in the output.
+  SECRETS_SCAN_OMIT_KEYS = "VITE_SUPABASE_URL,VITE_SUPABASE_ANON_KEY"
+
+[functions]
+  node_bundler = "esbuild"
+
+# SPA routing (Netlify serves /.netlify/functions/* before redirects)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"

@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  background: #0b0b0c;
+  color: #fff;
+  font-family: 'Inter', system-ui, sans-serif;
+  overscroll-behavior-y: none;
+}
+
+/* subtle field-stripe texture behind everything */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,0.012) 0 60px, transparent 60px 120px);
+  z-index: 0;
+}
+#root { position: relative; z-index: 1; }
+
+input[type='range'] { height: 28px; }
+input[type='search']::-webkit-search-cancel-button { filter: invert(1); }
+select { background-image: none; }
+
+:focus-visible { outline: 2px solid #e11d2e; outline-offset: 2px; }

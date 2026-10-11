@@ -1,0 +1,614 @@
+Gun|Bunch|Bench Pivot
+Gun|Bunch|Deep Corner
+Gun|Bunch|Dig Return
+Gun|Bunch|Hb Slip Screen
+Gun|Bunch|Inside Cross
+Gun|Bunch|Jet Pull Shallow
+Gun|Bunch|Mesh Spot
+Gun|Bunch|Mid Zone
+Gun|Bunch|Smash Return
+Gun|Bunch|Spacing
+Gun|Bunch|Speed Dig
+Gun|Bunch|Verticals
+Gun|Bunch|Hb Base
+Gun|Bunch|Y Curl
+Gun|Bunch|Y Lead Read Option
+Gun|Bunch|Z Spot
+Gun|Bunch|Z Spot N Go
+Gun|Bunch Offset|Bench Pivot
+Gun|Bunch Offset|Bunch Drive
+Gun|Bunch Offset|Cheat Outside Zone
+Gun|Bunch Offset|Choice Shallow Dig
+Gun|Bunch Offset|Corner Out Dig
+Gun|Bunch Offset|Dig Return
+Gun|Bunch Offset|Flood
+Gun|Bunch Offset|Hb Cross Screen
+Gun|Bunch Offset|Inside Zone Split
+Gun|Bunch Offset|Jet Pull Shallow
+Gun|Bunch Offset|Pa Cheat Switch Comeback
+Gun|Bunch Offset|Pa Cheat Switch Dig
+Gun|Bunch Offset|Smash Return
+Gun|Bunch Offset|Spacing Switch
+Gun|Bunch Offset|Speed Dig
+Gun|Bunch Offset|Tight Cheat Hb Screen
+Gun|Bunch Offset|Tight Cheat Te Flood
+Gun|Bunch Offset|Tight Cheat Te Out
+Gun|Bunch Offset|Verts Hb Under
+Gun|Bunch Offset|Y Trail
+Gun|Bunch Offset|Z Spot
+Gun|Bunch Spread|Branch Return
+Gun|Bunch Spread|Cheat Flood
+Gun|Bunch Spread|Cheat Hb Slip Screen
+Gun|Bunch Spread|Cheat Slot Cross
+Gun|Bunch Spread|Corner Divide
+Gun|Bunch Spread|Curl Flat
+Gun|Bunch Spread|Drive Y Corner
+Gun|Bunch Spread|Hb Slip Screen
+Gun|Bunch Spread|Jet Pull Shallow
+Gun|Bunch Spread|Mtn Curl Flat Corner
+Gun|Bunch Spread|Mtn Slot Hitch
+Gun|Bunch Spread|Mtn Slot Out
+Gun|Bunch Spread|Mtn Slot Under
+Gun|Bunch Spread|Mtn Snag Under
+Gun|Bunch Spread|Mtn Y-Shake
+Gun|Bunch Spread|Pa Post
+Gun|Bunch Spread|Spacing
+Gun|Bunch Spread|Speed Dig
+Gun|Bunch Spread|Z Spot
+Gun|Bunch Spread|Outside Zone
+Gun|Bunch Spread|Inside Zone
+Gun|Bunch TE|Boomerang Hb Off Tackle
+Gun|Bunch TE|Boomerang Mesh Traffic
+Gun|Bunch TE|Boomerang Pa Y Wheel
+Gun|Bunch TE|Bunch Levels
+Gun|Bunch TE|Crosser PoCo
+Gun|Bunch TE|Hb Draw
+Gun|Bunch TE|Hb Slip Screen
+Gun|Bunch TE|Inside Cross
+Gun|Bunch TE|Mesh
+Gun|Bunch TE|Mesh Dig
+Gun|Bunch TE|Mills Slot Option
+Gun|Bunch TE|Mtn Return Cross Up
+Gun|Bunch TE|Mtn Return Drive Flat
+Gun|Bunch TE|Mtn Return Flood Stick
+Gun|Bunch TE|Inside Zone
+Gun|Bunch TE|Qb Wrap
+Gun|Bunch TE|Read Option
+Gun|Bunch TE|Rpo Alert Bubble
+Gun|Bunch TE|Same Side Zone
+Gun|Bunch TE|Spacing
+Gun|Bunch TE|Te Corner
+Gun|Bunch Wide Nasty|Branch Return
+Gun|Bunch Wide Nasty|Cheat Drag Rub Crosser
+Gun|Bunch Wide Nasty|Cheat Wheel Post
+Gun|Bunch Wide Nasty|Choice Shallow Dig
+Gun|Bunch Wide Nasty|Corner Out Dig
+Gun|Bunch Wide Nasty|Flood Switch
+Gun|Bunch Wide Nasty|Hb Slip Screen
+Gun|Bunch Wide Nasty|Inside Zone
+Gun|Bunch Wide Nasty|Jet Shallow Swirl
+Gun|Bunch Wide Nasty|Spacing Switch
+Gun|Bunch Wide Nasty|Verticals
+Gun|Bunch Wide Nasty|Z Spot
+Gun|Deuce Close|Bench Dig Curl
+Gun|Deuce Close|Mesh Spot
+Gun|Deuce Close|Mtn Return H-Trail
+Gun|Deuce Close|Mtn Return Hb Toss
+Gun|Deuce Close|Mtn Return Y-Shake
+Gun|Deuce Close|Mtn Wr Corner
+Gun|Deuce Close|Mtn Y Corner
+Gun|Deuce Close|Mtn Y Option
+Gun|Deuce Close|Outside Zone
+Gun|Deuce Close|Pa Deep Curls
+Gun|Deuce Close|Pa Deep Over
+Gun|Deuce Close|Inside Zone
+Gun|Deuce Close|Rpo Peek Stick
+Gun|Deuce Close|Spacing Switch
+Gun|Deuce Close|Stick Switch
+Gun|Empty Base Flex|Qb Draw
+Gun|Empty Base Flex|All Hitch
+Gun|Empty Base Flex|Jailbreak Slot Screen
+Gun|Empty Base Flex|Levels Switch
+Gun|Empty Base Flex|Middle Hi Lo
+Gun|Empty Base Flex|Redzone Up
+Gun|Empty Base Flex|Shock Wr Option
+Gun|Empty Base Flex|Stick
+Gun|Empty Base Flex|Strong Curl
+Gun|Empty Base Flex|Trail Shake
+Gun|Empty Base Flex|Verticals Under
+Gun|Empty Base Flex|Y Corner
+Gun|Empty Bunch Open|Bunch Arches
+Gun|Empty Bunch Open|Choice Shallow Cross
+Gun|Empty Bunch Open|Crossers
+Gun|Empty Bunch Open|Dagger Ohio
+Gun|Empty Bunch Open|Drive Y Corner
+Gun|Empty Bunch Open|Middle Cross
+Gun|Empty Bunch Open|Dagger
+Gun|Empty Bunch Open|Qb Draw
+Gun|Empty Bunch Open|Slot Choice Spacing
+Gun|Empty Bunch Open|Slot Choice Spot
+Gun|Empty Bunch Open|Speed Dig
+Gun|Empty Bunch Open|Z Spot N Go
+Gun|Empty Bunch Wide|Drag Curl
+Gun|Empty Bunch Wide|Drive Wheel
+Gun|Empty Bunch Wide|Drive Y Corner
+Gun|Empty Bunch Wide|Jailbreak Screen
+Gun|Empty Bunch Wide|Post Corner Read
+Gun|Empty Bunch Wide|Qb Draw
+Gun|Empty Bunch Wide|Spacing Switch
+Gun|Empty Bunch Wide|Z Spot N Go
+Gun|Empty Bunch Wide|Z Spot Smash
+Gun|Empty Chips Quads|Crossers
+Gun|Empty Chips Quads|Hb Screen
+Gun|Empty Chips Quads|Dagger
+Gun|Empty Chips Quads|Post Corner Up
+Gun|Empty Chips Quads|Slot Sail
+Gun|Empty Chips Quads|Te Screen
+Gun|Normal Off Close Wk|Comeback Z Post
+Gun|Normal Off Close Wk|Counter Y
+Gun|Normal Off Close Wk|Double Post
+Gun|Normal Off Close Wk|Hb Scissors
+Gun|Normal Off Close Wk|Hb Slip Screen
+Gun|Normal Off Close Wk|Mtn Z Dig
+Gun|Normal Off Close Wk|Mtn Outside Zone
+Gun|Normal Off Close Wk|Mtn Pa Y Sit
+Gun|Normal Off Close Wk|Pa Slide
+Gun|Normal Off Close Wk|Pa Y Cross
+Gun|Normal Off Close Wk|Inside Zone
+Gun|Normal Off Close Wk|Pivot In Seams
+Gun|Normal Off Close Wk|Rpo Peek Slant
+Gun|Normal Off Close Wk|Slants
+Gun|Normal Off Close Wk|Hb Base
+Gun|Normal Y Off Close|Cheat Flat X Post
+Gun|Normal Y Off Close|Cheat Inside Zone
+Gun|Normal Y Off Close|Cheat Slash Wheel In
+Gun|Normal Y Off Close|Cheat Te Angle
+Gun|Normal Y Off Close|Cheat Te Screen
+Gun|Normal Y Off Close|Exit Hb Cross Screen
+Gun|Normal Y Off Close|Exit Pa Smash
+Gun|Normal Y Off Close|Exit Rpo Zone Hitches
+Gun|Normal Y Off Close|Fk Jet Y Wheel
+Gun|Normal Y Off Close|Hb Scissors
+Gun|Normal Y Off Close|Jet Touch Pass
+Gun|Normal Y Off Close|Mtn Angle Y Wheel
+Gun|Normal Y Off Close|Mtn Dash Flood
+Gun|Normal Y Off Close|Mtn Inside Zone
+Gun|Normal Y Off Close|Mtn Pa Boot
+Gun|Normal Y Off Close|Mtn Slot Shallow Cross
+Gun|Normal Y Off Close|Mtn Switch Corner
+Gun|Normal Y Off Close|Pa Jet Sweep
+Gun|Normal Y Off Close|Read Option
+Gun|Normal Y Off Close|Reload Hb Sweep
+Gun|Normal Y Off Close|Reload Mesh Spot
+Gun|Normal Y Off Close|Reload Pa Cross
+Gun|Normal Y Off Close|Reload Pa Deep Sail
+Gun|Normal Y Off Close|Reload Quick Hb Trail
+Gun|Normal Y Off Close|Reload Rpo Zone Snag
+Gun|Normal Y Off Close|Rpo Alert Cheat Bubble
+Gun|Normal Y Off Close|Rpo Glance Post
+Gun|Normal Y Off Close|Rz Cross Hb Choice
+Gun|Normal Y Off Close|Y-Sail
+Gun|Normal Y Off Close|Zone Fake Jet
+Gun|Spread Y Slot Wk|Corner Strike
+Gun|Spread Y Slot Wk|Curl Outs
+Gun|Spread Y Slot Wk|Double Cross
+Gun|Spread Y Slot Wk|Double Slants
+Gun|Spread Y Slot Wk|Four Verticals
+Gun|Spread Y Slot Wk|Hb Mid Draw
+Gun|Spread Y Slot Wk|Hb Slip Screen
+Gun|Spread Y Slot Wk|Hitch Seam
+Gun|Spread Y Slot Wk|Inside Cross
+Gun|Spread Y Slot Wk|Inside Zone
+Gun|Spread Y Slot Wk|Rpo Peek Slant
+Gun|Spread Y Slot Wk|Slot Outs
+Gun|Spread Y Slot Wk|Vert Outside Stop
+Gun|Spread Y Slot Wk|X Dagger
+Gun|Spread Y Slot Wk|Hb Base
+Gun|Tight Flex|Bench
+Gun|Tight Flex|Bench Switch
+Gun|Tight Flex|Cheat Bunch Drive Corner
+Gun|Tight Flex|Cheat Bunch Hb Draw
+Gun|Tight Flex|Cheat Bunch Switch Flood
+Gun|Tight Flex|Cross
+Gun|Tight Flex|Double Spot
+Gun|Tight Flex|Empty Mtn Mesh Rail
+Gun|Tight Flex|Empty Mtn Y-Cross Ohio
+Gun|Tight Flex|Empty Smash Z Post
+Gun|Tight Flex|Hb Counter
+Gun|Tight Flex|Hb Draw
+Gun|Tight Flex|Hb Option
+Gun|Tight Flex|Inside Hi Lo
+Gun|Tight Flex|Mesh Spot
+Gun|Tight Flex|Pa Cross Dig
+Gun|Tight Flex|Pa Post Shot
+Gun|Tight Flex|Read Option
+Gun|Tight Flex|Slot Curl
+Gun|Tight Flex|Stick
+Gun|Tight Flex|Wheel
+Gun|Tight Open|Bench Z Spot
+Gun|Tight Open|Curl Y-Option
+Gun|Tight Open|Dig Z Spot
+Gun|Tight Open|Drive Stutter Flat
+Gun|Tight Open|Fk Drive Stutter
+Gun|Tight Open|Hb Draw
+Gun|Tight Open|Hb Mid Zone
+Gun|Tight Open|Hb Scissors
+Gun|Tight Open|Hb Slip Screen
+Gun|Tight Open|Hitch N Go
+Gun|Tight Open|Mesh Crossers
+Gun|Tight Open|Mesh Spot
+Gun|Tight Open|Mtn Flood H-Choice
+Gun|Tight Open|Mtn Jet Pull Shallow
+Gun|Tight Open|Mtn Spot Y-Post
+Gun|Tight Open|Pa Scissors
+Gun|Tight Open|Inside Zone
+Gun|Tight Open|Read Option
+Gun|Tight Open|Same Side Zone
+Gun|Tight Open|Slot Post
+Gun|Tight Open|Spacing
+Gun|Tight Open|Spot X Option
+Gun|Tight Open|Stick
+Gun|Tight Open|Verticals Hb Burst
+Gun|Tight Y Off|Cheat Rpo Zone Alert Bubble
+Gun|Tight Y Off|Cheat Slash Wheel Cross
+Gun|Tight Y Off|Cheat Spot Y Quick
+Gun|Tight Y Off|Choice Pivot Return
+Gun|Tight Y Off|Flood Drive
+Gun|Tight Y Off|Hb Scissors
+Gun|Tight Y Off|Hb Slip Screen
+Gun|Tight Y Off|Inside Zone
+Gun|Tight Y Off|Mtn Mesh Spot
+Gun|Tight Y Off|Mtn Pa Spinner
+Gun|Tight Y Off|Mtn Slot Choice
+Gun|Tight Y Off|Mtn Spinner Hb Inside
+Gun|Tight Y Off|Mtn Wr Outside Zone
+Gun|Tight Y Off|Mtn Y-Corner
+Gun|Tight Y Off|01 Trap
+Gun|Tight Y Off|Duo
+Gun|Tight Y Off|Pa Go Slot Cross
+Gun|Tight Y Off|Pa Slot Cross
+Gun|Tight Y Off|Rpo Peek Slant Bubble
+Gun|Tight Y Off|Te Corner
+Gun|Tight Y Off|Wheel Spot
+Gun|Trey Y-Flex|Cross Flood
+Gun|Trey Y-Flex|Dagger
+Gun|Trey Y-Flex|Empty Flood Switch
+Gun|Trey Y-Flex|Empty Stick
+Gun|Trey Y-Flex|Empty Y Cross
+Gun|Trey Y-Flex|Hb Draw
+Gun|Trey Y-Flex|Hb Pump Draw
+Gun|Trey Y-Flex|Hb Slip Screen
+Gun|Trey Y-Flex|Inside Post Out
+Gun|Trey Y-Flex|Inside Zone
+Gun|Trey Y-Flex|Levels Y Corner
+Gun|Trey Y-Flex|Pa Crossers
+Gun|Trey Y-Flex|Pa Draw Choice
+Gun|Trey Y-Flex|Rpo Alert Omaha
+Gun|Trey Y-Flex|Same Side Zone
+Gun|Trey Y-Flex|Se Corner
+Gun|Trey Y-Flex|Shock H Option
+Gun|Trey Y-Flex|Verticals
+Gun|Trips TE Flex|Double In Sail
+Gun|Trips TE Flex|Hb Angle
+Gun|Trips TE Flex|Hb Draw
+Gun|Trips TE Flex|Hb Slip Screen
+Gun|Trips TE Flex|Levels Sail
+Gun|Trips TE Flex|Mtn Fork H Choice
+Gun|Trips TE Flex|Mtn Hitch N Go
+Gun|Trips TE Flex|Mtn Y Post
+Gun|Trips TE Flex|Outside Zone
+Gun|Trips TE Flex|Over Pivot
+Gun|Trips TE Flex|Pa Crossers
+Gun|Trips TE Flex|Inside Zone
+Gun|Trips TE Flex|Rpo Zone Alert Omaha
+Gun|Trips TE Flex|Stick
+Gun|Trips TE Flex|Verticals
+Gun|Trips Y Slot|Curls
+Gun|Trips Y Slot|Four Verticals
+Gun|Trips Y Slot|Go Dbl Post
+Gun|Trips Y Slot|Hb Mid Draw
+Gun|Trips Y Slot|Hb Off Tackle
+Gun|Trips Y Slot|Hb Slip Screen
+Gun|Trips Y Slot|Inside Attack
+Gun|Trips Y Slot|Pa Wr In
+Gun|Trips Y Slot|Hi Lo Dig
+Gun|Trips Y Slot|Inside Zone
+Gun|Trips Y Slot|Slot Fork
+Gun|Trips Y Slot|Slot 2 Buc
+Gun|Trips Y Slot|Stick
+Gun|Trips Y Slot|Strong Flood
+Gun|Trips Y Slot|Wr Smash
+Gun|Wing Slot Offset|Cheat Hb Jailbreak Screen
+Gun|Wing Slot Offset|Cheat Ohio Te Attack
+Gun|Wing Slot Offset|Cheat Post Dagger Wheel
+Gun|Wing Slot Offset|Dragon Spacing
+Gun|Wing Slot Offset|Drive
+Gun|Wing Slot Offset|Four Verticals
+Gun|Wing Slot Offset|Hb Punch
+Gun|Wing Slot Offset|Hb Slip Screen
+Gun|Wing Slot Offset|Mesh Spot
+Gun|Wing Slot Offset|Mtn Choice Wheels
+Gun|Wing Slot Offset|Mtn Jet Hb Duo
+Gun|Wing Slot Offset|Mtn Jet Pa Cross
+Gun|Wing Slot Offset|Mtn Jet Touch Pass
+Gun|Wing Slot Offset|Mtn Qb Sweep
+Gun|Wing Slot Offset|Mtn Wr Angle Post
+Gun|Wing Slot Offset|Pa Read
+Gun|Wing Slot Offset|Inside Zone
+Gun|Wing Slot Offset|Read Option
+Gun|Wing Slot Offset|Rpo Alert Bubble
+Gun|Wing Slot Offset|Spot Option
+Gun|Wing Slot Offset|Stick Nod Vertical
+Gun|Wing Slot Offset|Z Close Duo
+Gun|Wing Slot Offset|Z Close Pa Flood
+Gun|Wing Slot Offset|Z Close Toss
+Gun|Y Off Trio Close|Boomerang Mesh Z Rail
+Gun|Y Off Trio Close|Boomerang Pa X Over
+Gun|Y Off Trio Close|Boomerang Rpo Alert Swing
+Gun|Y Off Trio Close|Empty Mtn Flood H-Trail
+Gun|Y Off Trio Close|Empty Mtn Mesh Flat
+Gun|Y Off Trio Close|Empty Mtn Salem
+Gun|Y Off Trio Close|Flood
+Gun|Y Off Trio Close|Mtn Duo
+Gun|Y Off Trio Close|Mtn Inside Zone
+Gun|Y Off Trio Close|Mtn Mesh Rail
+Gun|Y Off Trio Close|Mtn Pa Cross Switch
+Gun|Y Off Trio Close|Mtn X-Dig Slot Corner
+Gun|Y Off Trio Close|Mtn Y-Corner Z-Choice
+Gun|Y Off Trio Close|01 Trap
+Gun|Y Off Trio Close|Outside Zone
+Gun|Y Off Trio Close|Pa Power Shallow Cross
+Gun|Y Off Trio Close|Power O
+Gun|Y Off Trio Close|Smash Return
+Gun|Y Off Trips Close|Deep Slot Curl
+Gun|Y Off Trips Close|Double Ins
+Gun|Y Off Trips Close|Drag Wheel
+Gun|Y Off Trips Close|Hb Mid Draw
+Gun|Y Off Trips Close|Hb Power
+Gun|Y Off Trips Close|Hb Slip Screen
+Gun|Y Off Trips Close|Mtn Y PoCo
+Gun|Y Off Trips Close|Mtn Corners
+Gun|Y Off Trips Close|Mtn Empty Dbl Unders
+Gun|Y Off Trips Close|Mtn Empty Hb Sluggo
+Gun|Y Off Trips Close|Mtn Empty Smash Y-Post
+Gun|Y Off Trips Close|Mtn Hb Corner
+Gun|Y Off Trips Close|Pa Cross
+Gun|Y Off Trips Close|Pa Fork
+Gun|Y Off Trips Close|Scat
+Gun|Y Off Trips Close|Slot Out
+Gun|Y Off Trips Close|Te Whip
+Gun|Y Off Trips Close|Wheel Mesh
+Gun|Y Off Trips Close|Wr Screen
+Gun|Y Off Trips Close|X Curl
+Gun|Y Off Trips Close|Y-Option Wheel
+Singleback|Tight Y Off|Cheat Hb Dive Wk
+Singleback|Tight Y Off|Deep In
+Singleback|Tight Y Off|Drive Flood
+Singleback|Tight Y Off|Fk Cheat Hb Counter
+Singleback|Tight Y Off|Fk Cheat Hb Stretch Wk
+Singleback|Tight Y Off|Hb Dive
+Singleback|Tight Y Off|Hb Zone Wk
+Singleback|Tight Y Off|Inside Zone Split
+Singleback|Tight Y Off|Omaha
+Singleback|Tight Y Off|Pa Cheat Cross
+Singleback|Tight Y Off|Pa Cheat Post Cross
+Singleback|Tight Y Off|Pa Deep Out
+Singleback|Tight Y Off|Pa Fk Cheat Flood Crossers
+Singleback|Tight Y Off|Pa Flood
+Singleback|Tight Y Off|Pa Post Dig
+Singleback|Tight Y Off Flex|Counter Y
+Singleback|Tight Y Off Flex|Hb Zone Wk
+Singleback|Tight Y Off Flex|Inside Zone Split
+Singleback|Tight Y Off Flex|Jet Sweep
+Singleback|Tight Y Off Flex|01 Trap
+Singleback|Tight Y Off Flex|Pa Deep Out
+Singleback|Tight Y Off Flex|Pa Jet Sweep
+Singleback|Tight Y Off Flex|Shallow Cross
+Singleback|Tight Y Off Flex|Stick Spacing
+Singleback|Tight Y Off Flex|Under Z Curl
+Singleback|Tight Y Off Flex|Wide Zone
+Singleback|Tight Y Off Flex|Zone Fake Jet
+Singleback|Wing Pair|Hb Dive
+Singleback|Wing Pair|Hb Inside Zone
+Singleback|Wing Pair|Hb Stretch
+Singleback|Wing Pair|Pa Sprint Hb Flat
+Singleback|Wing Pair|Pa Te Seam
+Singleback|Wing Pair|Pa X Burst Cross
+Singleback|Wing Pair|Te Attack
+Singleback|Wing Pair|Hb Duo
+Singleback|Wing Pair|Y Stick
+Singleback|Wing Slot|Four Verticals
+Singleback|Wing Slot|Hb Dive
+Singleback|Wing Slot|Hb Stretch
+Singleback|Wing Slot|Hb Zone Wk
+Singleback|Wing Slot|Mtn Duo Wrap
+Singleback|Wing Slot|Mtn Pa Z Slide
+Singleback|Wing Slot|Mtn Wide Zone Wk
+Singleback|Wing Slot|Pa Cross Shot
+Singleback|Wing Slot|Pa Sail X Post
+Singleback|Wing Slot|Pa Y Screen
+Singleback|Wing Slot|Y Stick
+Singleback|Wing Slot|Zone Alert Bubble
+Singleback|Wing Tight|Fake Hb Zone Qb Boot
+Singleback|Wing Tight|Hb Power O
+Singleback|Wing Tight|Hb Stretch
+Singleback|Wing Tight|Hb Zone Wk
+Singleback|Wing Tight|Pa Boot Flood
+Singleback|Wing Tight|Pa Boot Slide
+Singleback|Wing Tight|Pa Power O
+Singleback|Wing Tight|Pa Wheel Slide
+Singleback|Wing Tight|Pa Y-Drag Wheel
+Singleback|Wing Tight|Stick Nod Vertical
+Singleback|Wing Tight|Hb Base
+Singleback|Wing Tight|Y Stick
+Singleback|Wing Tight Z|Curl Flat Seam
+Singleback|Wing Tight Z|Drive
+Singleback|Wing Tight Z|Hb Dive
+Singleback|Wing Tight Z|Hb Smash
+Singleback|Wing Tight Z|Inside Zone
+Singleback|Wing Tight Z|Pa Y-Drag Wheel
+Singleback|Wing Tight Z|Hb Duo
+Singleback|Wing Tight Z|Te Attack
+Singleback|Wing Tight Z|Y Stick
+Singleback|Y Trips Close|Curls X-Choice
+Singleback|Y Trips Close|Hb Dive
+Singleback|Y Trips Close|Hb Pump Draw
+Singleback|Y Trips Close|Hb Stretch
+Singleback|Y Trips Close|Jet6 Soar
+Singleback|Y Trips Close|Mesh
+Singleback|Y Trips Close|Mtn Hb Zone Wk
+Singleback|Y Trips Close|Mtn Jet Pa Slot Screen
+Singleback|Y Trips Close|Mtn Jet Pa Sprint Rt
+Singleback|Y Trips Close|Mtn Jet Pa Sprint Y Leak
+Singleback|Y Trips Close|Mtn Jet Pa Wide Zone
+Singleback|Y Trips Close|Mtn Jet Slot Choice
+Singleback|Y Trips Close|Mtn Jet Wide Zone
+Singleback|Y Trips Close|Mtn Pa Boot Rt
+Singleback|Y Trips Close|Mtn X-Go Dig
+Singleback|Y Trips Close|Pa Switch Wr In
+Singleback|Y Trips Close|Smash
+Singleback|Y Trips Close|Wr Screen
+Pistol|Bunch|Flanker Drive
+Pistol|Bunch|Four Verticals
+Pistol|Bunch|Hb Dive
+Pistol|Bunch|Mtn Duo Wrap
+Pistol|Bunch|Mtn Hb Stretch
+Pistol|Bunch|Mtn Pa Stretch
+Pistol|Bunch|Pa Deep In
+Pistol|Bunch|Read Option Wk
+Pistol|Bunch|Spacing
+Pistol|Bunch TE|Cross Drag
+Pistol|Bunch TE|Fk Jet Inside Zone
+Pistol|Bunch TE|Flood
+Pistol|Bunch TE|Hb Counter
+Pistol|Bunch TE|Hb Dive
+Pistol|Bunch TE|Hb Slip Screen
+Pistol|Bunch TE|Hb Zone
+Pistol|Bunch TE|Jet Touch Pass
+Pistol|Bunch TE|Jet Touch Pass Fk Hb
+Pistol|Bunch TE|Pa Curls
+Pistol|Bunch TE|Speed Option
+Pistol|Bunch TE|Spot Y Option
+Pistol|Bunch TE|Stick
+Pistol|Bunch TE|Strong Power
+Pistol|Bunch TE|Verticals
+Pistol|Doubles Hip|Fk Jet Divide
+Pistol|Doubles Hip|Jet Pa Cross
+Pistol|Doubles Hip|Jet Pa Cross Hb Leak
+Pistol|Doubles Hip|Jet Touch Pass
+Pistol|Doubles Hip|Mesh Rail
+Pistol|Doubles Hip|Mtn Hb Slip Screen
+Pistol|Doubles Hip|Mtn Pa Boot Fork
+Pistol|Doubles Hip|Mtn Pin Pull Sweep
+Pistol|Doubles Hip|Pa Post Swirl
+Pistol|Doubles Hip|Read Option
+Pistol|Doubles Hip|Rpo Alert Jet Slant
+Pistol|Doubles Hip|Tech Out
+Pistol|Doubles Hip|Hb Zone Wk
+Pistol|Doubles Hip|Z Shake Crosser
+Pistol|Doubles Hip|Zone Fake Jet
+Pistol|Doubles Y Off Stack|Flanker Spot
+Pistol|Doubles Y Off Stack|Four Verticals
+Pistol|Doubles Y Off Stack|Hb Dive
+Pistol|Doubles Y Off Stack|Hb Draw
+Pistol|Doubles Y Off Stack|Hb Slip Screen
+Pistol|Doubles Y Off Stack|Hb Split Zone
+Pistol|Doubles Y Off Stack|Mtn Jet Hb Zone
+Pistol|Doubles Y Off Stack|Mtn Jet Pa Hb Wheel
+Pistol|Doubles Y Off Stack|Mtn Jet Pa Y Leak
+Pistol|Doubles Y Off Stack|Mtn Jet Qb Boot
+Pistol|Doubles Y Off Stack|Mtn Jet Touch Pass
+Pistol|Doubles Y Off Stack|Mtn Jet Wide Zone Wk
+Pistol|Doubles Y Off Stack|Pa Boot Slide
+Pistol|Doubles Y Off Stack|Pa Cross
+Pistol|Doubles Y Off Stack|Pa Post Shot
+Pistol|Doubles Y Off Stack|Read Option
+Pistol|Doubles Y Off Stack|Rpo Zone Alert Bubble
+Pistol|Doubles Y Off Stack|Wide Zone
+Pistol|Strong Y Off Close|Hb Counter
+Pistol|Strong Y Off Close|Hb Dive
+Pistol|Strong Y Off Close|Hb Slip Screen
+Pistol|Strong Y Off Close|Hb Zone
+Pistol|Strong Y Off Close|Pa Slide
+Pistol|Strong Y Off Close|Z Slant Y Corner
+Pistol|U Off Trips|Hb Counter
+Pistol|U Off Trips|Hb Dive
+Pistol|U Off Trips|Hb Stretch
+Pistol|U Off Trips|Hb Zone Wk
+Pistol|U Off Trips|Pa Boot
+Pistol|U Off Trips|Pa Y Corner
+Pistol|U Off Trips|Read Option
+Pistol|U Off Trips|Shock
+Pistol|U Off Trips|Te Cross
+Pistol|Wing Slot|Four Verticals
+Pistol|Wing Slot|Hb Slam
+Pistol|Wing Slot|Jet Pass Fk Zone
+Pistol|Wing Slot|Jet Touch Pass
+Pistol|Wing Slot|Dagger
+Pistol|Wing Slot|Pa Corner Post
+Pistol|Wing Slot|Y Stick
+Pistol|Wing Slot|Zone Alert Bubble
+Pistol|Wing Slot|Zone Fake Jet
+I Form|Close|Dbl Outs
+I Form|Close|Double Post
+I Form|Close|Hb Counter Wk
+I Form|Close|Hb Stretch
+I Form|Close|Hb Toss
+I Form|Close|Hb Zone Toss
+I Form|Close|Mesh
+I Form|Close|Pa Boot Flow
+I Form|Close|Pa Deep Cross Go
+I Form|Close|Pa Deep Read
+I Form|Close|95 Mike
+I Form|Close|Power O
+I Form|Slot Stack|94 Will
+I Form|Slot Stack|Pa Dagger
+I Form|Slot Stack|Hb Blast
+I Form|Slot Stack|Hb Iso
+I Form|Slot Stack|Jet Sweep
+I Form|Slot Stack|Pa Jet Sweep
+I Form|Slot Stack|Spacing
+I Form|Slot Stack|Stretch
+I Form|Slot Stack|Zone Fake Jet
+I Form|Y Off Close|Dbl Mtn Pa Double Cross
+I Form|Y Off Close|Dbl Mtn Pa Sprint Hb Flat
+I Form|Y Off Close|Dbl Mtn Zone Wk
+I Form|Y Off Close|Dbl Outs
+I Form|Y Off Close|Double Dig
+I Form|Y Off Close|Hb Iso
+I Form|Y Off Close|Hb Stretch
+I Form|Y Off Close|Hb Zone Toss
+I Form|Y Off Close|Mtn Counter Solid
+I Form|Y Off Close|Mtn Flood
+I Form|Y Off Close|Mtn Pa Counter
+I Form|Y Off Close|Pa Deep Read
+I Form|Y Off Close|Pa Pylon Sail
+I Form|Y Off Close|Pa X Deep Out
+I Form|Y Off Close|Zone Wk
+Weak|H Close Off|94 Will
+Weak|H Close Off|Bench Switch
+Weak|H Close Off|Counter F
+Weak|H Close Off|Flanker Drive
+Weak|H Close Off|Hb Gut
+Weak|H Close Off|Pa Power O
+Weak|H Close Off|Power O
+Weak|H Close Off|Stick
+Weak|H Close Off|Verticals
+Split Backs|Offset Wing Close|Bench H-Angle
+Split Backs|Offset Wing Close|Fb Dive
+Split Backs|Offset Wing Close|Hb Off Tackle
+Split Backs|Offset Wing Close|Mesh Rail
+Split Backs|Offset Wing Close|Mills Backs Cross
+Split Backs|Offset Wing Close|Pa Slide
+Goal Line|Normal|Fb Dive
+Goal Line|Normal|Hb Counter Wk
+Goal Line|Normal|Hb Dive
+Goal Line|Normal|Hb Split O
+Goal Line|Normal|Hb Sting
+Goal Line|Normal|Pa Power O
+Goal Line|Normal|Pa Spot
+Goal Line|Normal|Pa Sprint Hb Flat
+Goal Line|Normal|Pa Waggle
+Goal Line|Normal|Power O
+Goal Line|Normal|Qb Sneak
+Goal Line|Normal|Strong Toss
