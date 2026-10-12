@@ -4,7 +4,7 @@ import { create } from 'zustand';
 import { useApp } from '@/state/store';
 import { isPassPlay } from '@/engine/classify';
 import { isSuccess } from '@/engine/situation';
-import type { PlayResult } from '@/lib/types';
+import type { PlayResult, Situation } from '@/lib/types';
 import { grayFromRGBA, type Gray } from './gray';
 import { readScoreboard, sameSnap, type ScoreboardRead, type Side } from './scoreboard';
 import { readPreviousPlay, type PreviousPlay } from './prevPlay';
@@ -25,6 +25,8 @@ interface LinkState {
   prev: PreviousPlay | null;
   lastLogged: string | null;
   aspectWarning: boolean;
+  /** bumps every time a new snap with your ball is on screen (the Game Caller auto-recommends on it) */
+  snapSeq: number;
   start(): Promise<void>;
   stop(): void;
   setMySide(s: Side): void;
@@ -55,6 +57,7 @@ export const useGameLink = create<LinkState>((set, get) => ({
   prev: null,
   lastLogged: null,
   aspectWarning: false,
+  snapSeq: 0,
 
   async start() {
     if (get().status === 'live' || get().status === 'starting') return;
@@ -67,7 +70,7 @@ export const useGameLink = create<LinkState>((set, get) => ({
       stream.getVideoTracks()[0]?.addEventListener('ended', () => get().stop());
       candidate = null; settled = null;
       set({ status: 'live', read: null, readAt: 0, prev: null });
-      timer = setInterval(() => { void tick(); }, 900);
+      timer = setInterval(() => { void tick(); }, 450);
       void browserOcr().catch(() => undefined); // warm up the text reader in the background
     } catch (e) {
       const msg = (e as Error).name === 'NotAllowedError' ? 'Screen sharing was cancelled.' : (e as Error).message;
@@ -127,73 +130,79 @@ async function tick() {
 }
 
 async function onNewSnap(before: ScoreboardRead | null, after: ScoreboardRead, frame: Gray) {
-  const link = useGameLink.getState();
-  const side = link.mySide;
+  const side = useGameLink.getState().mySide;
   // Start the game record on the first picture, so a later auto-start can't reset the situation mid-drive.
   if (!useApp.getState().activeGameId) useApp.getState().startGame('Opponent');
-  const app = useApp.getState();
 
+  // 1) the screen is the truth for the new snap — update it first so the call shows instantly
+  const ranIn: Situation = useApp.getState().situation; // the situation the last play was run in
+  const scores = { myScore: myScore(after, side), oppScore: oppScore(after, side) };
+  if (after.possession === side) {
+    useApp.getState().setSituation({
+      down: after.down, distance: after.distance, yardLine: after.yardLine, quarter: after.quarter, clock: after.clock,
+      coverage: 'Unknown', pressure: 'Unknown', alignment: [], ...scores,
+    });
+    useGameLink.setState((st) => ({ snapSeq: st.snapSeq + 1 }));
+  } else {
+    useApp.getState().setSituation({ quarter: after.quarter, clock: after.clock, ...scores });
+  }
+  useApp.getState().updateGame(scores);
+
+  // 2) then read the Previous Play box and record what just happened
   let prev: PreviousPlay | null = null;
   try { prev = await readPreviousPlay(frame, await browserOcr()); } catch { prev = null; }
   if (prev) useGameLink.setState({ prev });
-
-  // 1) log the play that was just run (uses the situation from the previous snap)
-  if (link.autoLog && before) {
-    const decision = planAutoLog(before, after, prev, side, (name) => {
-      const p = matchPlay(name, app.plays, []);
-      return p ? isPassPlay(p) : !/^(HB|QB|FB)\b/.test(name);
-    });
-    if (decision.kind === 'log') {
-      const pending = app.calls.find((c) => c.id === app.pendingCallId && !c.result) ?? null;
-      const pendingPlay = pending ? app.playsById.get(pending.playId) : undefined;
-      let callId: string | null = null;
-      let label = decision.offenseName;
-      if (pending && pendingPlay && samePlayName(pendingPlay.playName, decision.offenseName)) {
-        callId = pending.id;
-        label = pendingPlay.playName;
-      } else {
-        const recentFormations = [...app.calls].reverse().map((c) => app.playsById.get(c.playId)?.formationId).filter((x): x is string => Boolean(x));
-        const play = matchPlay(decision.offenseName, app.plays, recentFormations);
-        if (play) {
-          if (pending) app.setPendingCall(null);
-          callId = app.callPlay(play.id, null).id;
-          label = play.playName;
-        }
-      }
-      if (callId) {
-        const call = useApp.getState().calls.find((c) => c.id === callId)!;
-        const play = useApp.getState().playsById.get(call.playId);
-        const pass = play ? isPassPlay(play) : true;
-        const o = decision.outcome;
-        const result: PlayResult = {
-          outcome: o, yards: decision.yards,
-          success: isSuccess(call.down, call.distance, decision.yards, decision.touchdown, false) && o !== 'Incomplete' && o !== 'Sack',
-          isPass: pass, completed: pass && o !== 'Incomplete' && o !== 'Sack',
-          touchdown: decision.touchdown, turnover: false, sack: o === 'Sack',
-          defenseSeen: decision.defense.seen,
-          observations: [...(decision.defense.blitz ? ['Blitz called'] : []), `Defense call: ${decision.defense.name}`, 'Auto-logged'],
-        };
-        useApp.getState().recordResult(callId, result);
-        const msg = `${label}: ${decision.touchdown ? 'TD' : `${decision.yards >= 0 ? '+' : ''}${decision.yards}`} vs ${decision.defense.name}`;
-        useGameLink.setState({ lastLogged: msg });
-        useApp.getState().toast(`Logged ${msg}`);
-      }
-    }
-  } else if (prev && before?.possession === side) {
-    // not auto-logging: still show what the defense called
-    useGameLink.setState({ lastLogged: `Last defense: ${defenseFromCall(prev.defense).name}` });
+  const link = useGameLink.getState();
+  if (!before) return;
+  if (!link.autoLog) {
+    if (prev && before.possession === side) useGameLink.setState({ lastLogged: `Last defense: ${defenseFromCall(prev.defense).name}` });
+    return;
   }
+  const app = useApp.getState();
+  const decision = planAutoLog(before, after, prev, side, (name) => {
+    const p = matchPlay(name, app.plays, []);
+    return p ? isPassPlay(p) : !/^(HB|QB|FB)\b/.test(name);
+  });
+  if (decision.kind !== 'log') return;
 
-  // 2) the screen is the truth for the new snap
-  if (after.possession === side) {
-    useApp.getState().setSituation({
-      down: after.down, distance: after.distance, yardLine: after.yardLine, quarter: after.quarter,
-      clock: after.clock, myScore: myScore(after, side), oppScore: oppScore(after, side),
-    });
+  const pending = app.calls.find((c) => c.id === app.pendingCallId && !c.result) ?? null;
+  const pendingPlay = pending ? app.playsById.get(pending.playId) : undefined;
+  let callId: string | null = null;
+  let label = decision.offenseName;
+  if (pending && pendingPlay && samePlayName(pendingPlay.playName, decision.offenseName)) {
+    callId = pending.id;
+    label = pendingPlay.playName;
   } else {
-    useApp.getState().setSituation({ myScore: myScore(after, side), oppScore: oppScore(after, side), quarter: after.quarter, clock: after.clock });
+    const recentFormations = [...app.calls].reverse().map((c) => app.playsById.get(c.playId)?.formationId).filter((x): x is string => Boolean(x));
+    const play = matchPlay(decision.offenseName, app.plays, recentFormations);
+    if (!play) {
+      useGameLink.setState({ lastLogged: `Not in playbook: ${decision.offenseName} (${decision.yards >= 0 ? '+' : ''}${decision.yards})` });
+      return;
+    }
+    if (pending) app.setPendingCall(null);
+    // the play was run in the previous snap's situation, not the one now on screen
+    const sit: Situation = { ...ranIn, down: before.down, distance: before.distance, yardLine: before.yardLine, quarter: before.quarter, clock: before.clock };
+    callId = app.callPlay(play.id, null, sit).id;
+    label = play.playName;
   }
-  if (useApp.getState().activeGameId) {
-    useApp.getState().updateGame({ myScore: myScore(after, side), oppScore: oppScore(after, side) });
-  }
+
+  const call = useApp.getState().calls.find((c) => c.id === callId)!;
+  const play = useApp.getState().playsById.get(call.playId);
+  const pass = play ? isPassPlay(play) : true;
+  const o = decision.outcome;
+  const result: PlayResult = {
+    outcome: o, yards: decision.yards,
+    success: isSuccess(call.down, call.distance, decision.yards, decision.touchdown, false) && o !== 'Incomplete' && o !== 'Sack',
+    isPass: pass, completed: pass && o !== 'Incomplete' && o !== 'Sack',
+    touchdown: decision.touchdown, turnover: false, sack: o === 'Sack',
+    defenseSeen: decision.defense.seen,
+    observations: [...(decision.defense.blitz ? ['Blitz called'] : []), `Defense call: ${decision.defense.name}`, 'Auto-logged'],
+  };
+  // recordResult would advance the chains; the screen already did, so keep the on-screen situation
+  const onScreen = useApp.getState().situation;
+  useApp.getState().recordResult(callId, result);
+  useApp.getState().setSituation(onScreen);
+  const msg = `${label}: ${decision.touchdown ? 'TD' : `${decision.yards >= 0 ? '+' : ''}${decision.yards}`} vs ${decision.defense.name}`;
+  useGameLink.setState({ lastLogged: msg });
+  useApp.getState().toast(`Logged ${msg}`);
 }

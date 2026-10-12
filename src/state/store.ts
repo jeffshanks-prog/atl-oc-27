@@ -56,7 +56,7 @@ interface AppState {
   startGame(opponent: string, gamePlanId?: string | null): Game;
   updateGame(patch: Partial<Game>): void;
   endGame(): void;
-  callPlay(playId: string, matchScore: number | null): PlayCall;
+  callPlay(playId: string, matchScore: number | null, at?: Situation): PlayCall;
   recordResult(callId: string, result: PlayResult): void;
   setPendingCall(id: string | null): void;
 
@@ -244,10 +244,10 @@ export const useApp = create<AppState>((set, get) => {
       const g = games.find((x) => x.id === id)!;
       void write({ table: 'games', kind: 'upsert', rows: [gameToRow(g, uid())] });
     },
-    callPlay(playId, matchScore) {
+    callPlay(playId, matchScore, at) {
       let s = get();
       if (!s.activeGameId) { s.startGame('Opponent'); s = get(); }
-      const sit = s.situation;
+      const sit = at ?? s.situation;
       const seq = s.calls.filter((c) => c.gameId === s.activeGameId).reduce((m, c) => Math.max(m, c.sequence), 0) + 1;
       const call: PlayCall = {
         id: uuid(), gameId: s.activeGameId!, playId, sequence: seq, down: sit.down, distance: sit.distance,

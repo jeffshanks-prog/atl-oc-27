@@ -18,6 +18,7 @@ import { PlayResultModal } from '@/components/PlayResultModal';
 import { FavoriteHeart } from '@/components/FavoriteHeart';
 import { Badge, Button, Card, Empty, SectionTitle, cx, inputCls } from '@/components/ui';
 import { GameLinkPanel } from '@/components/GameLinkPanel';
+import { DefensePredictionCard } from '@/components/DefensePredictionCard';
 import { useGameLink } from '@/vision/linkStore';
 
 export default function GameCaller() {
@@ -34,6 +35,7 @@ export default function GameCaller() {
   const updateGame = useApp((s) => s.updateGame);
   const game = useActiveGame();
   const linked = useGameLink((s) => s.status === 'live' && s.autoLog);
+  const snapSeq = useGameLink((s) => s.snapSeq);
   const toast = useApp((s) => s.toast);
   const gameCalls = useGameCalls();
 
@@ -75,6 +77,14 @@ export default function GameCaller() {
     setMode(m); setAsked(true); setRankIdx(0);
     setTimeout(() => recRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
   };
+  // Linked to the game: a new play-call screen with your ball shows the call immediately.
+  const seenSnap = useRef(snapSeq);
+  useEffect(() => {
+    if (snapSeq === seenSnap.current) return;
+    seenSnap.current = snapSeq;
+    ask(null);
+  }, [snapSeq]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const doCall = (s: Scored) => {
     const c = callPlay(s.play.id, s.score);
     // When the game screen is linked the result logs itself after the snap.
@@ -177,7 +187,7 @@ export default function GameCaller() {
               {primary && (
                 <PlayRecommendation
                   scored={primary}
-                  situation={situation}
+                  situation={ctx.situation}
                   onCall={() => doCall(primary)}
                   onNext={() => setRankIdx((i) => (i + 1) % Math.max(1, ranked.length))}
                   rank={followScript ? 0 : rankIdx}
@@ -230,6 +240,7 @@ export default function GameCaller() {
 
         {/* RIGHT — TENDENCIES */}
         <aside className="space-y-4">
+          <DefensePredictionCard />
           <OpponentTendencyCard t={ctx.tendencies} opponent={game?.opponent} />
         </aside>
       </div>

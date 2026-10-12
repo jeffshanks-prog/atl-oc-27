@@ -7,7 +7,7 @@
     "dev": "node scripts/copy-ocr-assets.mjs && vite",
     "build": "node scripts/copy-ocr-assets.mjs && tsc --noEmit && vite build",
     "typecheck": "tsc --noEmit",
-    "test:engine": "node --experimental-strip-types scripts/engine-smoke.ts && node --experimental-strip-types scripts/engine-full.ts",
+    "test:engine": "node --experimental-strip-types scripts/engine-smoke.ts && node --experimental-strip-types scripts/engine-full.ts && node --experimental-strip-types --no-warnings scripts/predict-test.ts",
     "build:playbook": "python3 scripts/build_atlanta_seed.py",
     "preview": "vite preview",
     "test:vision": "node --experimental-strip-types --no-warnings scripts/vision-test.ts && node --experimental-strip-types --no-warnings scripts/vision-ocr-test.ts",

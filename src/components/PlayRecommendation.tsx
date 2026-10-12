@@ -36,8 +36,14 @@ export function PlayRecommendation({
               {scored.isFavorite && <Badge tone="red">♥ Your favorite</Badge>}
               {scriptNote && <Badge tone="amber">{scriptNote}</Badge>}
             </div>
-            <div className="mt-1 text-xs font-semibold uppercase tracking-wider text-mute">{formationLabel(p)}</div>
-            <h2 className="font-display text-2xl font-bold uppercase leading-tight tracking-wide sm:text-3xl">{p.playName}</h2>
+            {/* Madden menu path: formation › set › play, big enough to read across the room */}
+            <div className="mt-1 flex flex-wrap items-center gap-1 font-display text-base font-semibold uppercase tracking-wide text-white/80 sm:text-lg" aria-label="Madden menu path">
+              <span className="rounded-md bg-ink/70 px-2 py-0.5">{p.formationFamily}</span>
+              <span className="text-red">›</span>
+              <span className="rounded-md bg-ink/70 px-2 py-0.5">{[p.formation, p.set].filter(Boolean).join(' ')}</span>
+              <span className="text-red">›</span>
+            </div>
+            <h2 className="font-display text-3xl font-bold uppercase leading-tight tracking-wide sm:text-4xl">{p.playName}</h2>
           </div>
           <div className="text-right">
             <div className="font-display text-4xl font-bold leading-none text-white">{scored.score}<span className="text-xl text-mute">%</span></div>

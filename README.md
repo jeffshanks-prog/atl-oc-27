@@ -283,6 +283,9 @@ How to use it:
 2. Set **My team on scoreboard**: *Right* when you're the home team (right side of the score bug), *Left* when you're away.
 3. Call plays from the app or straight in Madden. After each snap the app logs the play it sees in *Previous Play*, matches it to your playbook, and records the yards (from the ball-spot change), TD, coverage and blitz. Logged results are tagged **Auto-logged**; tap a result in *Recent plays* to fix it.
 4. Turnovers, punts, kicks and the end of a half are skipped. Log those by hand if you want them.
+5. Each new play-call screen with your ball brings up the recommended call automatically, shown in Madden's menu order: **Formation › Set › Play**.
+
+**Defense prediction.** After 15 logged snaps, the Game Caller predicts the coverage and blitz chance for the snap on screen, based on what this opponent called in the same down-and-distance range, the same field zone, and right after their last call (recent snaps count more). When you leave coverage on *UNK*, the recommendation is built for the predicted coverage; tap a coverage to override it. `scripts/predict-test.ts` checks it.
 
 Privacy and rules: frames are read in your browser and thrown away. Nothing is uploaded, and the app never touches the game (no memory reading, no inputs). Some organized tournaments ban outside tools during matches, so check their rules.
 
