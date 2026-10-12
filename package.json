@@ -4,12 +4,14 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "dev": "node scripts/copy-ocr-assets.mjs && vite",
+    "build": "node scripts/copy-ocr-assets.mjs && tsc --noEmit && vite build",
     "typecheck": "tsc --noEmit",
     "test:engine": "node --experimental-strip-types scripts/engine-smoke.ts && node --experimental-strip-types scripts/engine-full.ts",
     "build:playbook": "python3 scripts/build_atlanta_seed.py",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:vision": "node --experimental-strip-types --no-warnings scripts/vision-test.ts && node --experimental-strip-types --no-warnings scripts/vision-ocr-test.ts",
+    "build:glyphs": "node --experimental-strip-types --no-warnings scripts/build-glyphs.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.4",
@@ -19,16 +21,20 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",
     "stripe": "^16.12.0",
-    "zustand": "^4.5.5"
+    "tesseract.js": "^5.1.1",
+    "zustand": "^4.5.5",
+    "@tesseract.js-data/eng": "^1.0.0"
   },
   "devDependencies": {
     "@netlify/functions": "^2.8.2",
     "@types/node": "^20.16.10",
     "@types/papaparse": "^5.3.14",
+    "@types/pngjs": "^6.0.5",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.2",
     "autoprefixer": "^10.4.20",
+    "pngjs": "^7.0.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.13",
     "typescript": "^5.6.2",

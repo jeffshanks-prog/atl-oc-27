@@ -26,7 +26,7 @@ export interface Tendencies {
 type Done = PlayCall & { result: PlayResult };
 
 function isPressure(r: PlayResult, c: PlayCall): boolean {
-  return r.defenseSeen === 'Blitz' || r.observations.includes('Heavy pressure') || r.observations.includes('Edge rush')
+  return r.defenseSeen === 'Blitz' || r.observations.includes('Blitz called') || r.observations.includes('Heavy pressure') || r.observations.includes('Edge rush')
     || ['Blitz', 'Heavy blitz', 'Double mug'].includes(c.pressure);
 }
 

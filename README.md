@@ -59,23 +59,63 @@ The secret key bypasses every security rule; the app only uses it inside the Net
 Skip this and confirmation / password-reset emails send people to `localhost`. If you add a custom domain later, update both.
 
 ### Step 6 — Create your account in the app
-Open your site → **Create an account** with the owner email → confirm the email if asked → sign in.
-You go straight into the Game Caller (subscriptions are off). Admin is still needed for the **Admin** menu.
+1. Open your Netlify address (e.g. `https://atloc27.netlify.app`). You should see the **ATL OC 27** sign-in card.
+   ("Setup needed" instead? See Troubleshooting.)
+2. Tap **Create an account** under the Sign in button.
+3. **Name:** what the app calls you (changeable later in Account). **Email:** the owner email — this becomes your
+   admin account, so use one you'll keep. **Password:** at least 6 characters; save it in your password manager.
+4. Tap **Create account**.
+   - **Confirm email ON:** the card says *"Check your email to confirm your account, then sign in."* Open the
+     email from Supabase (subject like "Confirm your signup"; check spam/promotions) → tap **Confirm your mail**.
+     It opens your site already confirmed. Return to the sign-in card → enter email + password → **Sign in**.
+   - **Confirm email OFF:** you're signed in immediately.
+5. Brief **"Loading playbook…"** screen, then the **Game Caller**:
+   top bar reads **ATL OC 27 · Active scheme: JEFF'S ATL SPACING OFFENSE**; the big red **🧠 WHAT SHOULD I CALL?** button.
+6. Check: **Playbook** tab → *614 plays in the master database*. Tap **What should I call?** → you get a primary call
+   with a match score.
+
+Behind the scenes, signing up automatically created your profile, a blank subscription record (unused while
+subscriptions are off) and your default scheme with the 30/20/20/10/8/7/5 weights.
 
 ### Step 7 — Make yourself admin
-SQL Editor → New query (use your real email):
-```sql
-update public.profiles set is_admin = true
-where id = (select id from auth.users where email = 'YOUR_EMAIL');
-```
-Expect **1 row** affected (0 rows = typo, or step 6 isn't finished). Close and reopen the app (or refresh the page) — **Admin** appears in the top bar.
-Admins get the **Admin** menu (import, bulk tagging, editing master plays) and always have access, even after
-subscriptions are turned on. Make only your own account admin; use `false` to remove it.
+Every account starts as a regular user. Admin adds the **Admin** area: CSV/JSON import, bulk tagging, adding and
+editing master-playbook plays. There's deliberately no button for this — it can only be granted from the database,
+so nobody can make themselves admin from the app.
 
-**Troubleshooting:** *"Setup needed" screen* → Netlify variables missing/misspelled; fix and **Trigger deploy**.
-*Empty playbook after sign-in* → `002_seed.sql` didn't run; rerun step 2.2 (safe to run again). *No confirmation email* → check spam; the
-built-in sender is limited to a few per hour, so before launch add your own under
-**Authentication → Emails → SMTP Settings** (e.g. Resend or SendGrid).
+1. Supabase → **SQL Editor → New query**. Paste, replacing the email with the exact one from step 6 (keep the quotes):
+   ```sql
+   update public.profiles set is_admin = true
+   where id = (select id from auth.users where email = 'YOUR_EMAIL');
+   ```
+2. **Run.** Expect **Success · 1 row affected**. (0 rows → see Troubleshooting.)
+3. Confirm:
+   ```sql
+   select u.email, p.display_name, p.is_admin
+   from auth.users u join public.profiles p on p.id = u.id;
+   ```
+   Your row should show `is_admin = true`.
+4. In the app, refresh the page (computer) or swipe the installed app closed and reopen it (phone).
+   - **Computer / tablet:** **ADMIN** appears in the top bar next to the 👤 icon.
+   - **Phone:** the top bar is too narrow, so tap **👤 → Admin & import**.
+5. Check: Admin shows three tabs — **Import**, **Bulk tagging**, **All plays** — and a red **+ Add play** button.
+   Play pages now show **Edit play**.
+
+Admins always have access, even after subscriptions are turned on. Make only your own account admin.
+To remove admin from someone: same query with `false`.
+
+### Troubleshooting
+| What you see | Cause | Fix |
+|---|---|---|
+| **"Setup needed"** screen | Netlify doesn't have the Supabase values, or they weren't in the build | Check `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY` (exact spelling, no spaces/quotes) → **Deploys → Trigger deploy** → wait for *Published* → hard-refresh |
+| Stuck on **"Loading playbook…"** | Wrong Supabase URL/key, or the project is paused | Compare values with Supabase **Connect**; on Free, check the dashboard for a **Restore project** button |
+| **"Invalid login credentials"** | Wrong password, or the account was never created | **Forgot password?** on the sign-in card, or **Create an account** again |
+| **"Email not confirmed"** | You haven't clicked the confirmation link | Click it (check spam), or temporarily turn off **Confirm email** and sign in |
+| Confirmation link opens **localhost** / "can't reach this page" | Site URL not set (Supabase step 5) | Fix step 5. Your email is usually confirmed anyway — just go to your site and sign in |
+| No confirmation email | Spam folder, or the built-in sender's limit (a few emails per hour) | Wait and resend, or turn off **Confirm email** while testing. Before launch add your own sender: **Authentication → Emails → SMTP Settings** (Resend or SendGrid) |
+| Playbook shows **0 plays** | `002_seed.sql` didn't run | Run it again (step 2.2) — safe to repeat; then refresh the app |
+| Admin query says **0 rows** | Email typo / different capitalization, or the account was made before `001_schema.sql` ran | Copy the email exactly from **Authentication → Users**. If the check query shows no row, run: `insert into public.profiles (id, display_name) select id, split_part(email,'@',1) from auth.users where email = 'YOUR_EMAIL' on conflict do nothing;` then repeat step 7 |
+| **Admin** still missing after 1 row | App is showing saved data from before | Refresh/reopen while online. On a phone it's under **👤 → Admin & import** |
+| Amber **"Offline"** or **"Syncing"** badge | No connection, or changes still uploading | Normal — results save on the device and sync automatically. **👤 → Sync now** forces it |
 
 ## 2. Netlify (about 20 minutes)
 
@@ -225,6 +265,29 @@ Counters follow SPACING → SCREEN → RUN → MESH → RPO → PLAY ACTION → 
 Run `npm run test:engine` (13-play scenario checks) or `node --experimental-strip-types scripts/engine-full.ts`
 (scenarios against all 614 plays).
 
+## 4b. Linking the game screen (PC)
+
+On a desktop browser the Game Caller shows **🎮 Link Madden screen**. Click **Link game screen** and pick your Madden window (or the whole screen) in Chrome's share prompt. From then on, every play-call screen is read automatically:
+
+| Read from the screen | Used for |
+|---|---|
+| Down & distance (incl. *Inches* and *Goal*) | Situation, success rate |
+| Ball spot (▼ = your side of the 50, ▲ = theirs) | Field position, red zone, yards gained |
+| Quarter, game clock, score | 2-minute / 4-minute logic, game score |
+| Possession arrow | Only your snaps are used |
+| **Previous Play** box (defense call + your call) | Logs the result and the coverage they called, so opponent tendencies fill in |
+
+How to use it:
+
+1. Run Madden **full screen or borderless** at any 16:9 size (1080p, 1440p and 4K tested). Keep the app open in Chrome on a second monitor, or on a phone/tablet (sharing only works from the PC's browser).
+2. Set **My team on scoreboard**: *Right* when you're the home team (right side of the score bug), *Left* when you're away.
+3. Call plays from the app or straight in Madden. After each snap the app logs the play it sees in *Previous Play*, matches it to your playbook, and records the yards (from the ball-spot change), TD, coverage and blitz. Logged results are tagged **Auto-logged**; tap a result in *Recent plays* to fix it.
+4. Turnovers, punts, kicks and the end of a half are skipped. Log those by hand if you want them.
+
+Privacy and rules: frames are read in your browser and thrown away. Nothing is uploaded, and the app never touches the game (no memory reading, no inputs). Some organized tournaments ban outside tools during matches, so check their rules.
+
+Under the hood: `src/vision/` holds a small digit reader trained on Madden 27's scoreboard font (`scripts/fixtures/*.png`, rebuilt with `npm run build:glyphs`) and a text reader for the Previous Play names (served from `/tesseract`, copied in at build time). `npm run test:vision` checks every fixture at five screen sizes, the defense-name mapping and the auto-log rules. If Madden changes the scoreboard in an update, add a labelled screenshot to `scripts/fixtures`, list it in `scripts/build-glyphs.ts`, and rebuild.
+
 ## 5. Turning on subscriptions (later, about 25 minutes)
 
 When the app is finished and you're ready to charge:
@@ -319,10 +382,11 @@ checkout = price ID variables missing.
 
 ```
 data/                  atlanta-plays.txt (names) · atlanta-playbook.csv (auto-tagged, import format)
-scripts/               build_atlanta_seed.py · engine-smoke.ts · engine-full.ts
+scripts/               build_atlanta_seed.py · engine-smoke.ts · engine-full.ts · build-glyphs.ts · vision-test.ts · fixtures/
 supabase/migrations/   001_schema.sql (tables, RLS, access gate + billing switch, triggers, views) · 002_seed.sql (614 plays)
 netlify/functions/     create-checkout · customer-portal · stripe-webhook   (shared code in netlify/lib)
 src/engine/            classify · situation · recommend · tendencies · screenAlert   (pure logic, no UI)
+src/vision/            scoreboard reader · Previous Play reader · defense-call mapping · auto-log · link controller
 src/analytics/         stats (from stored results only)
 src/data/              api (loading) · plays (master writes) · mappers (DB ↔ app)
 src/offline/           queue (offline-safe writes, auto-sync on reconnect)

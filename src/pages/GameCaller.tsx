@@ -17,6 +17,8 @@ import { OpponentTendencyCard } from '@/components/OpponentTendencyCard';
 import { PlayResultModal } from '@/components/PlayResultModal';
 import { FavoriteHeart } from '@/components/FavoriteHeart';
 import { Badge, Button, Card, Empty, SectionTitle, cx, inputCls } from '@/components/ui';
+import { GameLinkPanel } from '@/components/GameLinkPanel';
+import { useGameLink } from '@/vision/linkStore';
 
 export default function GameCaller() {
   const nav = useNavigate();
@@ -31,6 +33,8 @@ export default function GameCaller() {
   const endGame = useApp((s) => s.endGame);
   const updateGame = useApp((s) => s.updateGame);
   const game = useActiveGame();
+  const linked = useGameLink((s) => s.status === 'live' && s.autoLog);
+  const toast = useApp((s) => s.toast);
   const gameCalls = useGameCalls();
 
   const [mode, setMode] = useState<QuickMode | null>(null);
@@ -71,7 +75,12 @@ export default function GameCaller() {
     setMode(m); setAsked(true); setRankIdx(0);
     setTimeout(() => recRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
   };
-  const doCall = (s: Scored) => { const c = callPlay(s.play.id, s.score); setResultFor(c.id); };
+  const doCall = (s: Scored) => {
+    const c = callPlay(s.play.id, s.score);
+    // When the game screen is linked the result logs itself after the snap.
+    if (linked) toast(`${s.play.playName} — run it, the result logs automatically`);
+    else setResultFor(c.id);
+  };
   const resultCall = calls.find((c) => c.id === (resultFor ?? '')) ?? null;
   const pendingCall = calls.find((c) => c.id === pendingCallId && !c.result) ?? null;
 
@@ -122,6 +131,8 @@ export default function GameCaller() {
           </>
         )}
       </Card>
+
+      <GameLinkPanel />
 
       <div className="grid gap-4 lg:grid-cols-[340px_minmax(0,1fr)_320px]">
         {/* LEFT — SITUATION (desktop) */}
@@ -256,7 +267,7 @@ export default function GameCaller() {
       </Card>
 
       {/* Mobile one-thumb result bar */}
-      {pendingCall && !resultFor && (
+      {pendingCall && !resultFor && !linked && (
         <div className="fixed inset-x-0 bottom-[calc(60px+env(safe-area-inset-bottom))] z-30 p-3 lg:bottom-4 lg:left-auto lg:right-6 lg:w-96">
           <button onClick={() => setResultFor(pendingCall.id)}
             className="flex min-h-[60px] w-full items-center justify-center gap-2 rounded-2xl bg-white font-display text-xl font-bold uppercase text-black shadow-2xl">

@@ -80,7 +80,7 @@ export const OUTCOMES: Outcome[] = ['TD', '+20', '+10', '+5', '+3', '+1', '0', '
 export const DEFENSE_SEEN: DefenseSeen[] = ['C0', 'C1', 'C2', 'C3', 'C4', 'C6', 'Man', 'Blitz', 'Unknown'];
 export const OBSERVATIONS = [
   'User covered middle', 'User jumped flat', 'User jumped screen', 'Heavy pressure', 'Loaded box', 'Light box',
-  'Press coverage', 'Soft coverage', 'QB spy', 'Edge rush', 'Safety came down',
+  'Press coverage', 'Soft coverage', 'QB spy', 'Edge rush', 'Safety came down', 'Blitz called',
 ] as const;
 
 export const CONCEPT_KEYS: { key: ConceptKey; label: string }[] = [

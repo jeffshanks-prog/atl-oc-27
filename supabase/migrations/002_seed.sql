@@ -2620,3 +2620,6 @@ on conflict do nothing;
 
 -- Make yourself admin after signing up (change the email):
 --   update public.profiles set is_admin = true where id = (select id from auth.users where email = 'you@example.com');
+
+-- Result check: shows how many plays are now in the database.
+select count(*) as plays_in_database from public.plays where owner_id is null;

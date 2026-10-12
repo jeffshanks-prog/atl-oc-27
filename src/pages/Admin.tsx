@@ -12,6 +12,7 @@ import { FavoriteHeart } from '@/components/FavoriteHeart';
 import { Badge, Button, Card, Chip, Empty, Field, PageHeader, SectionTitle, cx, inputCls } from '@/components/ui';
 import { formationLabel } from '@/engine/classify';
 import type { Play } from '@/lib/types';
+import atlantaCsv from '../../data/atlanta-playbook.csv?raw';
 
 type Tab = 'import' | 'tag' | 'plays';
 
@@ -110,6 +111,22 @@ function ImportPanel() {
       </Card>
 
       <Card className="space-y-3 p-4 text-sm">
+        <SectionTitle>Full Atlanta playbook</SectionTitle>
+        <p className="text-mute">All 42 formations / 614 plays, auto-tagged. Safe to run again — plays you've already got are skipped.</p>
+        <Button tone="red" className="w-full" disabled={busy}
+          onClick={() => { const p = parseImport(atlantaCsv, 'csv'); setKind('csv'); setText(''); setReport(null); setParsed(p); void (async () => {
+            setBusy(true);
+            try {
+              const r = await runImport(p.valid, (d, t) => setProgress([d, t]), { autoTagged: true });
+              r.errors = [...p.errors, ...r.errors];
+              setReport(r);
+              upsertPlaysLocal(await loadPlays());
+            } catch (e) {
+              setReport({ added: 0, updated: 0, skipped: 0, errors: [{ row: 0, message: (e as Error).message }] });
+            } finally { setBusy(false); setProgress(null); }
+          })(); }}>
+          {busy && progress ? `Loading ${progress[0]}/${progress[1]}…` : '⬇ Load full Atlanta playbook (614 plays)'}
+        </Button>
         <SectionTitle>Template & rules</SectionTitle>
         <Button className="w-full" onClick={() => download('atl-oc-27-import-template.csv', templateCsv())}>⬇ Download import template</Button>
         <Button className="w-full" onClick={() => download('atl-oc-27-playbook.csv', exportCsv(plays.filter((p) => !p.ownerId)))} disabled={!plays.length}>⬇ Export current playbook (CSV)</Button>

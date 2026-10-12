@@ -141,7 +141,12 @@ export function dedupeKey(playbook: string, family: string, formation: string, s
 const COMPARE_FIELDS = Object.keys(playToRow({} as Play)).filter((k) => !['id', 'playbook_id', 'formation_id', 'is_seed', 'owner_id'].includes(k));
 
 /** Writes to the MASTER playbook (admin only — enforced by database policy). */
-export async function runImport(rows: { row: number; play: ImportPlay }[], onProgress?: (done: number, total: number) => void): Promise<ImportReport> {
+export async function runImport(
+  rows: { row: number; play: ImportPlay }[],
+  onProgress?: (done: number, total: number) => void,
+  opts: { autoTagged?: boolean } = {},
+): Promise<ImportReport> {
+  const seed = Boolean(opts.autoTagged);
   const report: ImportReport = { added: 0, updated: 0, skipped: 0, errors: [] };
   const playbooks = await listPlaybooks();
   const formations = await listFormations();
@@ -155,15 +160,15 @@ export async function runImport(rows: { row: number; play: ImportPlay }[], onPro
       const fm = await ensureFormation(pb.id, play.formationFamily, play.formation, formations);
       const key = dedupeKey(pb.name, fm.family, fm.name, play.set, play.playName);
       const prev = byKey.get(key);
-      const full: Play = { ...play, id: prev?.id ?? '', playbookId: pb.id, formationId: fm.id, playbook: pb.name, formationFamily: fm.family, formation: fm.name, isSeed: false, ownerId: null };
+      const full: Play = { ...play, id: prev?.id ?? '', playbookId: pb.id, formationId: fm.id, playbook: pb.name, formationFamily: fm.family, formation: fm.name, isSeed: seed, ownerId: null };
       const row_ = playToRow(full);
       if (prev) {
         const before = playToRow(prev);
         const changed = COMPARE_FIELDS.some((k) => JSON.stringify(before[k] ?? null) !== JSON.stringify(row_[k] ?? null))
           || [...prev.tags].sort().join('|').toLowerCase() !== [...play.tags].sort().join('|').toLowerCase()
-          || prev.isSeed;
+          || prev.isSeed !== seed;
         if (!changed) { report.skipped++; continue; }
-        const { error } = await supabase.from('plays').update({ ...row_, id: prev.id, is_seed: false }).eq('id', prev.id);
+        const { error } = await supabase.from('plays').update({ ...row_, id: prev.id, is_seed: seed }).eq('id', prev.id);
         if (error) throw new Error(error.message);
         await setPlayTags(prev.id, play.tags);
         byKey.set(key, { ...full, id: prev.id });

@@ -36,13 +36,28 @@ function Splash({ text = 'Loading playbook…' }: { text?: string }) {
 }
 
 function SetupNeeded() {
+  const url = (import.meta.env.VITE_SUPABASE_URL as string | undefined) ?? '';
+  const key = (import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined) ?? '';
+  const row = (name: string, ok: boolean, hint: string) => (
+    <li className="flex gap-2">
+      <span className={ok ? 'text-emerald-400' : 'text-red'}>{ok ? '✓' : '✗'}</span>
+      <span><code>{name}</code> — <span className="text-mute">{ok ? 'found' : hint}</span></span>
+    </li>
+  );
+  const urlLooksRight = /^https:\/\/[a-z0-9-]+\.supabase\.co\/?$/i.test(url.trim());
   return (
     <div className="grid min-h-screen place-items-center bg-ink p-6 text-white">
       <div className="max-w-md rounded-3xl border border-line bg-coal p-6">
         <h1 className="font-display text-2xl font-bold">ATL OC 27 — setup needed</h1>
-        <p className="mt-2 text-sm text-mute">
-          Set <code>VITE_SUPABASE_URL</code> and <code>VITE_SUPABASE_ANON_KEY</code> in Netlify → Site settings → Environment variables
-          (or a local <code>.env</code> file), then redeploy. See README.md.
+        <p className="mt-2 text-sm text-mute">This build is missing its Supabase settings:</p>
+        <ul className="mt-3 space-y-1 text-sm">
+          {row('VITE_SUPABASE_URL', Boolean(url), 'missing from this build')}
+          {url && !urlLooksRight && <li className="pl-5 text-xs text-amber-300">Found, but it doesn't look like https://xxxx.supabase.co — check for quotes, spaces or extra text.</li>}
+          {row('VITE_SUPABASE_ANON_KEY', Boolean(key), 'missing from this build')}
+        </ul>
+        <p className="mt-4 text-sm text-mute">
+          Add them in Netlify → your project → Project configuration → Environment variables, then
+          Deploys → Trigger deploy → Clear cache and deploy project. See README.md.
         </p>
       </div>
     </div>

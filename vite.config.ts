@@ -27,6 +27,13 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,ico,woff2}'],
+        // The screen-reading engine (~10 MB) is only fetched when someone links a game; cache it then.
+        globIgnores: ['tesseract/**', '**/tesseract*.js'],
+        runtimeCaching: [{
+          urlPattern: ({ url }) => url.pathname.startsWith('/tesseract/'),
+          handler: 'CacheFirst',
+          options: { cacheName: 'ocr-engine', expiration: { maxEntries: 10 } },
+        }],
         navigateFallback: '/index.html',
         navigateFallbackDenylist: [/^\/\.netlify\//],
       },
